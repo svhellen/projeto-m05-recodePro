@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
+<head>
+	<title>Listagem Reservas</title>
+</head>
+<body>
+	<main>
+		<div class="row">
+			<div class="col-sm-12">
+				
+				<a th:href="@{/reservaCrud/cadastrar}" class="btn btn-primary my-1">Nova reserva</a>
+				
+				<div class="card">
+					
+					<div class="card-body table-responsive p-0">
+						<table class="table table-hover text-nowrap">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nome do cliente</th>
+									<th>Destino da passagem</th>
+									<th>Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="reserva : ${Reservas}">
+									<td th:text="${reserva.idReserva}">000</td>
+									<td th:text="${reserva.cliente.nomeCliente}">Exemplo nome modalidade</td>
+									<td th:text="${reserva.passagem.destinoPassagem}">Dia</td>
+									<td>
+										<div class="btn-group"><!--data-toggle="popover" data-placement="top"
+												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"-->
+											<!--<a type="button"  class="btn btn-primary"
+												th:href="@{/reservaCrud/{id} (id=${id=${reserva.idReserva})}">
+												<i class="bi bi-info-circle "></i>
+											</a>-->
+											<a type="button" class="btn btn-warning"
+												th:href="@{/reservaCrud/editar/{id} (id=${reserva.idReserva})}">
+												<i class="bi bi-pencil-square"></i>
+											</a>
+											<a type="button" class="btn btn-danger"
+												th:href="@{/reservaCrud/excluir/{id} (id=${reserva.idReserva})}"
+												onclick="return confirm('Tem certeza que deseja excluir?');">
+												<i class="bi bi-trash3"></i>
+											</a>
+										</div>
+									<td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

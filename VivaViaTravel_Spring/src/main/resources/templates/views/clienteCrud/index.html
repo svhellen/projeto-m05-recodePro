@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
+
+<head>
+	<title>Listagem Cliente</title>
+</head>
+
+<body>
+	<main>
+		<div class="row">
+			<div class="col-sm-12">
+
+				<a th:href="@{/clienteCrud/cadastrar}" class="btn btn-primary my-1">Novo Cliente</a>
+
+				<div class="card">
+					<div class="card-body table-responsive p-0">
+						<table class="table table-hover text-nowrap">
+							<thead class=" ">
+								<tr>
+									<th>Id</th>
+									<th>Nome</th>
+									<th>Telefone</th>
+									<th>Email</th>
+									<th>Senha</th>
+									<th>Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="cliente : ${Clientes}">
+									<td th:text="${cliente.idCliente}">000</td>
+									<td>
+										<span th:text="${cliente.nomeCliente}">Maria</span>
+										<!--<span th:text="${cliente.sobrenome}">Silva</span>-->
+									</td>
+									<td th:text="${cliente.telefoneCliente}">(99) 99999-0000</td>
+									<td th:text="${cliente.emailCliente}">maria@email.com</td>
+									<td th:text="${cliente.senhaCliente}"></td>
+									<td>
+										<div class="btn-group">
+											<!--<a type="button" data-placement="top"
+												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"
+												th:href="@{/clientes/{id} (id=${cliente.id})}">
+												<i class="bi bi-info-circle"></i>
+											</a>-->
+											<a type="button" data-placement="top" data-content="Editar"
+												data-trigger="hover" class="btn btn-warning"
+												th:href="@{/clienteCrud/editar/{id} (id=${cliente.idCliente})}">
+												<i class="bi bi-pencil-square"></i>
+											</a>
+											<a type="button" data-placement="top" data-content="Remover"
+												data-trigger="hover" class="btn btn-danger"
+												th:href="@{/clienteCrud/excluir/{id} (id=${cliente.idCliente})}"
+												onclick="return confirm('Tem certeza que deseja excluir o cliente?');">
+												<i class="bi bi-trash3"></i>
+											</a>
+										</div>
+									<td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

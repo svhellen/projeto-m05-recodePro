@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
+
+<head>
+	<title>Cadastrar Passagem</title>
+</head>
+
+<body class=" bg-body-secondary">
+	<main class=" ">
+
+		<!-- form  -->
+		<form method="POST" th:object="${passagem}" class="  container-fluid mx-auto">
+			<div class="  form-crud ">
+				<fieldset>
+					<legend>Dados Passagem</legend>
+
+					<input type="hidden" th:field="*{idPassagem}">
+
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label for="destino">Destino</label>
+								<input type="text" class="form-control" placeholder="Aracaju - SE"
+									th:field="*{destinoPassagem}" required>
+							</div>
+						</div>
+						<!--						
+						<div class="col-md-4 col-sm-12 row m-0">
+							<div class="form-group col-8 p-0">
+								<label for="cidade">Cidade</label>
+								<input type="text" class="form-control" placeholder="Sao Paulo" th:field="*{cidade}"
+									required>
+							</div>
+							<div class="form-group col-4 p-0 ps-3">
+								<label for="estado">Estado</label>
+								<select  th:field="*{estado}" class="form-select" aria-label="Default select example">
+									<option th:each="uf : ${estados}" th:text="${uf}" th:value="${uf}">SP</option>
+								</select>
+							</div>
+						</div>-->
+
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label for="origem">Origem</label>
+								<input type="text" class="form-control" placeholder="São Paulo - SP"
+									th:field="*{origemPassagem}" required>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label for="data">Data</label>
+								<input type="date" class="form-control" placeholder="01/01/2022"
+									th:field="*{dataPassagem}" required>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label for="preco">E-mail</label>
+								<input type="text" class="form-control" placeholder="1.123,12" th:field="*{precoPassagem}"
+									required>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label for="classe">Classe da passagem</label>
+								<select th:field="*{classePassagem}" class="form-select"
+									aria-label="Default select example">
+									<option th:each="classe : ${classes}" th:text="${classe.descricao}" th:value="${classe.descricao}">SP
+									</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<div class=" text-center row mt-3">
+					<button type="submit" class="btn btn-primary col mx-auto">Salvar</button>
+				</div>
+			</div>
+		</form>
+	</main>
+</body>
+
+</html>

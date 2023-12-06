@@ -1,0 +1,21 @@
+<!-- header crud -->
+<div th:fragment="conteudo-header (title)">
+	
+	<div class="row text-center m-0 p-0 menuCrud">
+		
+		<h1 class=" " th:include="${title}">Titulo do main</h1>
+	
+		<ul class="nav justify-content-center">
+			<li class="nav-item" th:class="${'clientesActive' == param.title} ? 'nav-link active' : 'nav-link'">
+				<a th:href="@{/clienteCrud}" class="nav-link">Clientes</a>
+			</li>
+			<li class="nav-item" th:class="${'passagensActive' == param.title} ? 'nav-link active' : 'nav-link'">
+				<a th:href="@{/passagemCrud}" class="nav-link">Passagens</a>
+			</li>
+			<li class="nav-item" th:class="${'reservasActive' == param.title} ? 'nav-link active' : 'nav-link'">
+				<a th:href="@{/reservaCrud}" class="nav-link">Reservas</a>
+			</li>
+		</ul>
+	</div>
+
+</div>

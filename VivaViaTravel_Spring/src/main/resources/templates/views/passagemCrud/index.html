@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::body}, ~{::scripts})}">
+
+<head>
+	<title>Listagem Passagem</title>
+</head>
+
+<body>
+	<main>
+		<div class="row">
+			<div class="col-sm-12">
+
+				<a th:href="@{/passagemCrud/cadastrar}" class="btn btn-primary my-1">Nova Passagem</a>
+
+				<div class="card">
+					<div class="card-body table-responsive p-0">
+						<table class="table table-hover text-nowrap">
+							<thead class=" ">
+								<tr>
+									<th>Id</th>
+									<th>Destino</th>
+									<th>Origem</th>
+									<th>Data</th>
+									<th>Preço</th>
+									<th>Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="passagem : ${Passagens}">
+									<td th:text="${passagem.idPassagem}"></td>
+									<td th:text="${passagem.destinoPassagem}"></td>
+									<td th:text="${passagem.origemPassagem}"></td>
+									<td th:text="${passagem.dataPassagem}"></td>
+									<td th:text="${passagem.precoPassagem}"></td>
+									<td>
+										<div class="btn-group">
+											<!--<a type="button" data-placement="top"
+												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"
+												th:href="@{/passagemCrud/detalhes/{id} (id=${passagem.idPassagem})}">
+												<i class="bi bi-info-circle"></i>
+											</a>-->
+											<a type="button" data-placement="top" data-content="Editar"
+												data-trigger="hover" class="btn btn-warning"
+												th:href="@{/passagemCrud/editar/{id} (id=${passagem.idPassagem})}">
+												<i class="bi bi-pencil-square"></i>
+											</a>
+											<a type="button" data-placement="top" data-content="Remover"
+												data-trigger="hover" class="btn btn-danger"
+												th:href="@{/passagemCrud/excluir/{id} (id=${passagem.idPassagem})}"
+												onclick="return confirm('Tem certeza que deseja excluir o cliente?');">
+												<i class="bi bi-trash3"></i>
+											</a>
+										</div>
+									<td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

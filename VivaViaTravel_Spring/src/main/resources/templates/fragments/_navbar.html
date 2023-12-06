@@ -1,0 +1,55 @@
+<header th:fragment="nav" class="  ">
+
+	<nav class="navbar navbar-expand-md navbar-dark" id="menu">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#" style="color: #FFF;">
+				<img th:src="@{/assets/img/logo_principal.png}" alt="logo" id="logo">
+			</a>
+
+			<!-- Button for small screens -->
+			<button class="btn d-lg-none navbar-dark" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive" id="offcanvas-btn">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<!-- Offcanvas menu -->
+			<div class="offcanvas-lg offcanvas-end " tabindex="-1" id="offcanvasResponsive"
+				aria-labelledby="offcanvasResponsiveLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title login " id="offcanvasResponsiveLabel">
+						<ul>
+							<li class="nav-item">
+								<a class="btn nav-link " th:classappend="${#strings.equals('/admin', currentPage) ? 'active' : ''}"  
+								th:href="@{/admin}">Crud</a></li>
+						</ul>
+					</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+						data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
+				</div>
+
+				<!-- Navbar links -->
+				<ul class="navbar-nav offcanvas-body off col-lg-8 ">
+					<li class="nav-item">
+						<a class="nav-link" th:classappend="${#strings.equals('/home', currentPage) ? 'active' : ''}" 
+						th:href="@{/home}">Home</a></li>
+					<li class="nav-item"><a class="nav-link" th:classappend="${#strings.equals('/hospedagens', currentPage) ? 'active' : ''}" th:href="@{/hospedagens}">Hospedagens</a></li>
+					<li class="nav-item"><a class="nav-link" th:classappend="${#strings.equals('/passagens', currentPage) ? 'active' : ''}" th:href="@{/passagens}">Passagens</a></li>
+					<li class="nav-item"><a class="nav-link" th:classappend="${#strings.equals('/promocoes', currentPage) ? 'active' : ''}" th:href="@{/promocoes}">Promocoes</a></li>
+					<li class="nav-item"><a class="nav-link" th:classappend="${#strings.equals('/destinos', currentPage) ? 'active' : ''}" th:href="@{/destinos}">Destinos</a></li>
+					<li class="nav-item"><a class="nav-link" th:classappend="${#strings.equals('/contato', currentPage) ? 'active' : ''}" th:href="@{/contato}">Contato</a></li>
+				</ul>
+
+			</div>
+
+			<!-- Navbar links for larger screens -->
+			<div class="d-none d-lg-block login ">
+				<ul>
+					<li class="nav-item">
+						<a class="btn nav-link " th:classappend="${#strings.equals('/admin', currentPage) ? 'active' : ''}"  
+					th:href="@{/admin}">Crud</a></li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+	</nav>
+</header>

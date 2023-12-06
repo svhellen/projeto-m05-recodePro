@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::body}, ~{::scripts})}">
+
+<head>
+<title>Cadastrar Passagem</title>
+</head>
+
+<body>
+	<main class=" "> 
+		<section class="container mx-auto p-4">
+			<!-- <a href="./views/passagemCrud/formulario.html"  //// th:object="${passagem}"
+				class="btn btn-primary mb-3"> Add passagem </a> -->
+
+			<!-- MODAL -->
+			<button type="button" class="btn btn-primary mb-3"
+				data-bs-toggle="modal" data-bs-target="#exampleModalAddPassagem">Add
+				passagem</button>
+			<!-- data-bs-whatever="@add" -->
+
+			<div class="modal fade text-start" id="exampleModalAddPassagem"
+				tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel">
+								<span id="recipient-name">Cadastrar passagem</span>
+							</h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="container-fluid py-5" id="div-form-contato">
+							<form action="./passagem-create" class="">
+								<input type="hidden" id="id" name="id">
+								<div class="modal-body d-grid gap-4 mx-auto p-3">
+									<div class="">
+										<label for="f-origem">Origem</label> <input type="text"
+											class="form-control" id="f-origem" name="origem" required>
+									</div>
+									<div class="">
+										<label for="f-destino">Destino</label> <input type="text"
+											class="form-control" id="f-destino" name="destino" required>
+									</div>
+									<div class="">
+										<label for="f-classe">Classe</label> <input type="text"
+											class="form-control" id="f-classe" name="classe" required>
+									</div>
+									<div class="">
+										<label for="f-data">Data</label> <input type="date"
+											class="form-control" id="f-data" name="data" required>
+									</div>
+									<div class="">
+										<label for="f-preco">Pre�o</label> <input type="text"
+											class="form-control" id="f-preco" name="preco" required>
+									</div>
+								</div>
+								<div class="modal-footer justify-content-center">
+									<button type="button" class="btn btn-secondary"
+										data-bs-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn btn-success">Enviar</button>
+									<!-- 		<input type="button" value="Cancelar" class="btn" onclick="../../cliente"> -->
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIM MODAL -->
+				<!--		<table class="table-light table-responsive text-center px-3">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Destino</th> 
+						<th>Telefone</th>
+						<th>Email</th> 
+						<th>A��es</th>
+					</tr>
+				</thead>
+				<tbody>
+					<jstl:forEach items="${listaPassagens}" var="passagem">
+						<tr>
+							<td th:text="${passagem.idPassagem}"></td>
+							<td th:text="${passagem.destinoPassagem}"></td>
+							<td th:text="${passagem.origemPassagem}"></td>
+							<td th:text="${passagem.emailCliente}"></td>
+							<td>
+								<a th:href="passagem-details?id=${passagem.idPassagem}" class="btn btn-primary">Detalhes</a>  
+								<a th:href="@{/passagemCrud/editar/{id} (id=${passagem.idPassagem})}" class="btn btn-success">Editar</a>  
+								<a  th:href="@{/passagemCrud/excluir/{id} (id=${passagem.idPassagem})}" onclick="return confirm('Deseja Excluir?')" class="btn btn-danger">Excluir</a>
+							</td>
+						</tr>
+					</jstl:forEach>
+			</table> -->
+
+			<div class=" row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+					<div class="col" th:each="passagem : ${Passagens}">
+						<!-- card -->
+						<div class="card " style="max-width: 740px;">
+							<div class="card-body">
+								<small>Passagem n�:<strong
+										th:text"${passagem.idPassagem}"></strong></small>
+								<h5 class="card-title text-center mt-2">Dados passagem</h5>
+							</div>
+							<div class="row g-0 g-md-3 justify-content-center">
+								<div class="col-8 col-md-auto">
+									<div class="card-body ">
+										<p>Passagem n�: <span ${passagem.idPassagem}></span></p>
+										<p>Origem: <span ${passagem.origemPassagem}></span></p>
+										<p>Destino: <span ${passagem.destinoPassagem}></span></p>
+										<p>Classe: <span ${passagem.classePassagem}></span></p>
+										<p>Data: <span ${passagem.dataPassagem}></span></p>
+										<p>Pre�o: R$ <span ${passagem.precoPassagem}></span></p>
+									</div>
+								</div>
+								<div class="card-footer">
+									<div class=" text-center">
+										<!-- <a href="reserva-edit?id=${reserva.idReserva}" class="btn btn-success">Editar</a>   
+										<a href="reserva-delete?id=${passagem.idPassagem}"
+											onclick="return confirm('Deseja Excluir?')"
+											class="btn btn-danger">Excluir</a> -->
+
+										<!-- MODAL -->
+										<button type="button" class="btn btn-success"
+											data-bs-toggle="modal"
+											data-bs-target="#exampleModal${passagem.idPassagem}"
+											data-bs-whatever="@editar">Editar</button>
+										<a href="passagem-delete?id=${passagem.idPassagem}"
+											onclick="return confirm('Deseja Excluir?')"
+											class="btn btn-danger">Excluir</a>
+
+										<div class="modal fade text-start"
+											id="exampleModal${passagem.idPassagem}" tabindex="-1"
+											aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h1 class="modal-title fs-5" id="exampleModalLabel">Atualizar
+															passagem</h1>
+														<button type="button" class="btn-close"
+															data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="container-fluid py-5" id="div-form-contato">
+														<form action="./passagem-update" class="">
+															<input type="hidden" id="id" name="id"
+																value="${passagem.idPassagem}">
+															<div class="modal-body d-grid gap-4 mx-auto p-3">
+																<div class="">
+																	<label for="f-origem">Origem</label> <input type="text"
+																		class="form-control" id="f-origem" name="origem"
+																		value="${passagem.origemPassagem}" required>
+																</div>
+																<div class="">
+																	<label for="f-destino">Destino</label> <input
+																		type="text" class="form-control" id="f-destino"
+																		name="destino" value="${passagem.destinoPassagem}"
+																		required>
+																</div>
+																<div class="">
+																	<label for="f-classe">Classe</label> <input type="text"
+																		class="form-control" id="f-classe" name="classe"
+																		value="${passagem.classePassagem}" required>
+																</div>
+																<div class="">
+																	<label for="f-data">Data</label> <input type="date"
+																		class="form-control" id="f-data" name="data"
+																		value="${passagem.dataPassagem}" required>
+																</div>
+																<div class="">
+																	<label for="f-preco">Pre�o</label> <input type="text"
+																		class="form-control" id="f-preco" name="preco"
+																		value="${passagem.precoPassagem}" required>
+																</div>
+															</div>
+															<div class="modal-footer justify-content-center">
+																<button type="button" class="btn btn-secondary"
+																	data-bs-dismiss="modal">Cancelar</button>
+																<button type="submit" class="btn btn-primary">Enviar</button>
+																<!-- 		<input type="button" value="Cancelar" class="btn" onclick="../../cliente"> -->
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- MODAL -->
+									</div>
+								</div>
+							</div>
+							<!-- card -->
+						</div>
+					</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

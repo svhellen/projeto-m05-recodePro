@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout_global :: layout(~{::title},  _, ~{::body}, ~{::scripts})}">
+
+<head>
+	<title>Hospedagens</title>
+</head>
+
+<body  class="sitePrincipal">
+	<!-- formulário hospedagem -->
+	<div class="container-fluid py-5" id="div-form">
+		<form class="d-grid gap-4 mx-auto p-3">
+			<h4>Hospedagens</h4>
+
+			<div class="">
+				<label for="f-destino">Destino</label>
+				<input type="text" class="form-control" id="f-destino" placeholder="Para onde vai?" required>
+			</div>
+			<div class="row">
+				<div class="col">
+					<label for="data-check-in">Data check-in</label>
+					<input type="date" class="form-control" id="f-check-in" required>
+				</div>
+				<div class="col">
+					<label for="data-check-out">Data check-out</label>
+					<input type="date" class="form-control" id="f-check-out">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<label for="f-bedrooms">Quartos</label>
+					<input type="number" min="1" max="4" value="1" class="form-control" id="f-bedrooms">
+				</div>
+				<div class="col">
+					<label for="f-adults">Adultos</label>
+					<input type="number" min="1" max="8" value="1" class="form-control" id="f-adults">
+				</div>
+				<div class="col">
+					<label for="f-kids">Crian�as</label>
+					<input type="number" min="0" max="16" value="0" class="form-control" id="f-kids">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Buscar</button>
+		</form>
+	</div>
+	<main>
+
+		<div class="d-grid">
+			<!-- cards hospedagens  -->
+			<section id="hospedagens" class="container-fluid py-3 my-3 mx-auto">
+				<h1>Hospedagens em alta</h1>
+				<div class="row row-cols g-4 py-3">
+					<div class="col">
+						<div class="card ">
+							<img src="../../assets/img/hoteis/hotel-5.jpg" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">NomeHotel</h5>
+								<div class="pb-3">
+									<div class="rate">4,9</div>
+									<div class="d-inline">
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+									</div>
+								</div>
+								<p><i class="bi bi-geo-alt"></i> nomeLocal</p>
+
+								<p class="card-text">Breve descri��o do hotel.</p>
+								<p>Pre�o a partir de <strong>R$ Pre�o</strong></p>
+								<a href="em-construcao.html" class=" btn btn-primary d-block">Ver detalhes</a>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<img src="../../assets/img/hoteis/hotel-3.jpg" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">NomeHotel</h5>
+								<div class="pb-3">
+									<div class="rate">4,5</div>
+									<div class="d-inline">
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-half"></i>
+									</div>
+								</div>
+								<p><i class="bi bi-geo-alt"></i> nomeLocal</p>
+								<p class="card-text">Breve descri��o do hotel.</p>
+								<p>Preço a partir de <strong>R$ Preço</strong></p>
+								<a href="em-construcao.html" class=" btn btn-primary d-block">Ver detalhes</a>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<img src="../../assets/img/hoteis/hotel-1.jpg" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">NomeHotel</h5>
+								<div class="pb-3">
+									<div class="rate">4,7</div>
+									<div class="d-inline">
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-half"></i>
+									</div>
+								</div>
+								<p><i class="bi bi-geo-alt"></i> nomeLocal</p>
+								<p class="card-text">Breve descrição do hotel.</p>
+								<p>Preço a partir de <strong>R$ Preço</strong></p>
+								<a href="em-construcao.html" class=" btn btn-primary d-block">Ver detalhes</a>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<img src="../../assets/img/hoteis/hotel-2.jpg" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">NomeHotel</h5>
+								<div class="pb-3">
+									<div class="rate">4,3</div>
+									<div class="d-inline">
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-fill"></i>
+										<i class="bi bi-star-half"></i>
+									</div>
+								</div>
+								<p><i class="bi bi-geo-alt"></i> nomeLocal</p>
+								<p class="card-text">Breve descrição do hotel.</p>
+								<p>Preço a partir de <strong>R$ Preço</strong></p>
+								<a href="em-construcao.html" class=" btn btn-primary d-block">Ver detalhes</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</main>
+</body>
+</html>
