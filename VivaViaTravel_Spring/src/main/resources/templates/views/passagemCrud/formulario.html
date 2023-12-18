@@ -3,7 +3,7 @@
 	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
 
 <head>
-	<title>Cadastrar Passagem</title>
+	<title>[[${passagem.idPassagem == null ? 'Cadastrar' : 'Editar'}]] Passagem</title>
 </head>
 
 <body class=" bg-body-secondary">
@@ -58,7 +58,7 @@
 						</div>
 						<div class="col-md-6 col-sm-12">
 							<div class="form-group">
-								<label for="preco">E-mail</label>
+								<label for="preco">Preço</label>
 								<input type="text" class="form-control" placeholder="1.123,12" th:field="*{precoPassagem}"
 									required>
 							</div>

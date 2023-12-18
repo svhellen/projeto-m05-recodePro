@@ -1,9 +1,14 @@
 package br.com.vivaviatravel_spring.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Table(name = "Passagem")
@@ -19,21 +24,22 @@ public class Passagem {
 	private String dataPassagem;
 	private Double precoPassagem;
 
-	/* private Reserva reserva; */
-
+	@OneToMany(mappedBy = "passagem", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY) // , orphanRemoval = true
+	private List<Reserva> reservas;
 	public Passagem() {
 
 	}
 
 	public Passagem(Long idPassagem, String classePassagem, String origemPassagem, String destinoPassagem,
-			String dataPassagem, Double precoPassagem, Reserva reserva) {
+			String dataPassagem, Double precoPassagem, List<Reserva> reservas) {
+		super();
 		this.idPassagem = idPassagem;
 		this.classePassagem = classePassagem;
 		this.origemPassagem = origemPassagem;
 		this.destinoPassagem = destinoPassagem;
 		this.dataPassagem = dataPassagem;
 		this.precoPassagem = precoPassagem;
-		/* this.reserva = reserva; */
+		this.reservas = reservas;
 	}
 
 	public Long getIdPassagem() {
@@ -84,11 +90,17 @@ public class Passagem {
 		this.precoPassagem = precoPassagem;
 	}
 
-	/*
-	 * public Reserva getReserva() { return reserva; }
-	 * 
-	 * public void setReserva(Reserva reserva) { this.reserva = reserva; }
-	 */
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+
+	public boolean possuiReservas() {
+		return reservas != null && !reservas.isEmpty();
+	}
 
 	public static void status(Passagem p) {
 		System.out.println("|   Id: " + p.getIdPassagem() + " | Origem: " + p.getOrigemPassagem() + " | Destino: "

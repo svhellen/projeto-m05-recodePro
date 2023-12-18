@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!--<title th:insert="${title}">Título</title>-->
 	<title>
-		<th:block th:include="${title}"> Dashboard </th:block> - VivaVia Travel
+		<th:block th:include="${title}"> Títilo </th:block> - VivaVia Travel
 	</title>
 	<!--bootstrap style-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,12 +19,10 @@
 
 <body id="body-layout">
 	<!-- header -->
-	<header th:replace="~{fragments/_navbar :: nav}">
-		
-	</header >
+	<header th:replace="~{fragments/_navbar :: nav}"></header>
 	
-	<!-- main -->
-	<main th:insert="${content}"></main>
+	<!-- conteudo pags -->
+	<div th:insert="${content}"></div>
 	
 	<!-- footer -->
 	<footer th:replace="~{fragments/_footer :: footer}"></footer>

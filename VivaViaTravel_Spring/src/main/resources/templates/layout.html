@@ -16,8 +16,8 @@
 </head>
 
 <body id="body-layout">
-		<header >
-			<nav th:replace="~{fragments/_navbar :: nav}"></nav>
+		<header  th:replace="~{fragments/_navbar :: nav}">
+			<!--<nav th:replace="~{fragments/_navbar :: nav}"></nav>-->
 			<!--<nav th:insert="${nav}"></nav>-->
 		</header>
 		<!-- conteúdo da página -->
@@ -42,7 +42,7 @@
 		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 		crossorigin="anonymous"></script>
 		
-	<!--<th:block th:replace="~{${scripts}}"></th:block>-->
+	<script><th:block th:replace="~{${scripts}}"></th:block></script>
 </body>
 
 </html>

@@ -1,6 +1,5 @@
 package br.com.vivaviatravel_spring.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -22,18 +21,16 @@ public class Reserva {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idReserva;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY) // cascade = CascadeType.ALL,
 	@JoinColumn(name = "fk_passagem_id", nullable = false)
 	private Passagem passagem;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY) // cascade = CascadeType.ALL,
 	@JoinColumn(name = "fk_cliente_id", nullable = false)
 	private Cliente cliente;
 
-
 	public Reserva() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Reserva(Long idReserva, Passagem passagem, Cliente cliente) {
@@ -66,7 +63,7 @@ public class Reserva {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Reserva [idReserva=" + idReserva + ", passagem=" + passagem + ", cliente=" + cliente + "]";

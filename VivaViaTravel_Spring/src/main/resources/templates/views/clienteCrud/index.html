@@ -22,7 +22,7 @@
 									<th>Nome</th>
 									<th>Telefone</th>
 									<th>Email</th>
-									<th>Senha</th>
+									<!--<th>Senha</th>-->
 									<th>Ações</th>
 								</tr>
 							</thead>
@@ -35,14 +35,14 @@
 									</td>
 									<td th:text="${cliente.telefoneCliente}">(99) 99999-0000</td>
 									<td th:text="${cliente.emailCliente}">maria@email.com</td>
-									<td th:text="${cliente.senhaCliente}"></td>
+									<!--<td th:text="${cliente.senhaCliente}"></td>-->
 									<td>
 										<div class="btn-group">
-											<!--<a type="button" data-placement="top"
-												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"
-												th:href="@{/clientes/{id} (id=${cliente.id})}">
+											<a type="button" data-placement="top" data-content="Detalhes"
+												data-trigger="hover" class="btn btn-primary"
+												th:href="@{/clienteCrud/{id} (id=${cliente.idCliente})}">
 												<i class="bi bi-info-circle"></i>
-											</a>-->
+											</a>
 											<a type="button" data-placement="top" data-content="Editar"
 												data-trigger="hover" class="btn btn-warning"
 												th:href="@{/clienteCrud/editar/{id} (id=${cliente.idCliente})}">
@@ -64,6 +64,11 @@
 			</div>
 		</div>
 	</main>
+<!--	<th:block th:fragment="scripts">
+		<script th:if="${error_message}" th:inline="javascript">
+			window.alert([[${error_message}]]); // Exibe o alerta se houver uma mensagem de erro
+		</script>
+	</th:block>-->
 </body>
 
 </html>

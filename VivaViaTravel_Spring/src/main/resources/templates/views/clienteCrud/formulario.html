@@ -3,7 +3,7 @@
 	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
 
 <head>
-	<title>Cadastrar Cliente</title>
+	<title>[[${cliente.idCliente == null ? 'Cadastrar' : 'Editar'}]] Cliente</title>
 </head>
 
 <body>

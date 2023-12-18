@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.vivaviatravel_spring.enums.ClassesPassagemAerea;
 import br.com.vivaviatravel_spring.model.Passagem;
@@ -46,7 +47,7 @@ public class PassagemController {
 
 	@GetMapping("/editar/{id}")
 	public ModelAndView editar(@PathVariable Long id) {
-		ModelAndView modelAndView = new ModelAndView("views/passagemCrud/editar.html");
+		ModelAndView modelAndView = new ModelAndView("views/passagemCrud/formulario.html");
 		modelAndView.addObject("passagem", passagemRepository.getReferenceById(id));
 		modelAndView.addObject("classes", ClassesPassagemAerea.values());
 
@@ -60,9 +61,16 @@ public class PassagemController {
 		return "redirect:/passagemCrud";
 	}
 
-	@GetMapping({ "/excluir/{id}" })
-	public String excluir(@PathVariable Long id) {
-		passagemRepository.deleteById(id);
+	@GetMapping("/excluir/{id}")
+	public String excluir(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+		Passagem passagem = passagemRepository.getReferenceById(id);
+
+		if (passagem != null && !passagem.possuiReservas()) {
+			passagemRepository.delete(passagem);
+		} else { // Passagem possui reservas, add mensagem de erro 
+			redirectAttributes.addFlashAttribute("error_message",
+				"Não é possível excluir a passagem, pois ela possui reservas associadas.");
+		}
 
 		return "redirect:/passagemCrud";
 	}
